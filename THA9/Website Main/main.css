@@ -1,0 +1,35 @@
+body {
+  /*     margin: 0; */
+      background-color:aqua;
+      
+    }
+    #look {
+      display:flex;
+      justify-content:space-evenly;
+    }
+    #Inner {
+      text-align:center;
+    }
+  #Outer {
+      text-align:center;
+    }
+    #bg {
+        display: grid;
+      grid-template-columns: repeat(6, 15.8vw);
+      grid-template-rows: repeat(6, 13vh);
+      grid-gap: 4px;
+      padding: 5px;
+      background-color: rgb(175, 200, 200);
+    }
+    .box {
+      background-color: white;
+      border: 1px solid black;
+      border-radius: 2px;
+    }
+    
+    .box:hover {
+      opacity: 0.5;
+    }
+    .boxclicked {
+      background-color: rgb(100,100,100)
+    }

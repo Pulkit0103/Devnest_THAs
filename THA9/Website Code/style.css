@@ -1,0 +1,21 @@
+.box {
+    height: 2000px;
+    width: 2000px;
+    display: grid;
+    grid-template-columns: repeat(6 ,1fr) ;
+    grid-template-rows: repeat(6 , 1fr);
+    background-color: chartreuse;
+    grid-gap: 10px;
+
+
+}
+.box:hover {
+    opacity: 0.9;
+}
+
+.boxclicked {
+    background-color: aquamarine;
+}
+.items {
+    background-color: rgb(221, 93, 88);
+}
