@@ -1,69 +1,36 @@
-const form = document.getElementById("form");
-const input = document.getElementById("input");
-const workUL = document.getElementById("work");
+const input = document.querySelector('input')
+const btn = document.querySelector('button')
+const todolist=document.querySelector('.todo-list')
 
-const work = JSON.parse(localStorage.getItem("work"));
+const todos = [
+    {
+        title : "THA 10" ,
+        done : false
+    },
+    {
+        title : "THA 11" ,
+        done : false
+    }   
+]
 
-if (work) {
-  work.forEach((todo) => {
-    addTodo(todo);
-  });
+function loadTodo(){
+    todos.map(todo => {
+        const newtodo = document.createElement('div');
+        newtodo.innerHTML = todo.title;
+        todolist.appendChild(newtodo);
+    })
 }
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
+loadTodo();
 
-  addTodo();
-});
+btn.addEventListener('click' , () => {
+    const newtodo = document.createElement('div');
+    newtodo.innerHTML = input.value;
+    todolist.appendChild(newtodo);
+    input.value="";
+})
 
-function addTodo(todo) {
-  let todoText = input.value;
+localStorage.setItem('todos' , todos);
 
-  if (todo) {
-    todoText = todo.text;
-  }
-
-  if (todoText) {
-    const todoEl = document.createElement("li");
-    if (todo && todo.completed) {
-      todoEl.classList.add("completed");
-    }
-
-    todoEl.innerText = todoText;
-
-    todoEl.addEventListener("click", () => {
-      todoEl.classList.toggle("completed");
-
-      updateLS();
-    });
-
-    todoEl.addEventListener("contextmenu", (e) => {
-      e.preventDefault();
-
-      todoEl.remove();
-
-      updateLS();
-    });
-
-    workUL.appendChild(todoEl);
-
-    input.value = "";
-
-    updateLS();
-  }
-}
-
-function updateLS() {
-  const workEl = document.querySelectorAll("li");
-
-  const work = [];
-
-  workEl.forEach((todoEl) => {
-    work.push({
-      text: todoEl.innerText,
-      completed: todoEl.classList.contains("completed"),
-    });
-  });
-
-  localStorage.setItem("work", JSON.stringify(work));
-}
+const newTodo = localStorage.getItem("todos");
+console.log(newTodo);
